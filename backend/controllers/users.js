@@ -1,5 +1,4 @@
 const { response, request } = require('express');
-
 const { petitionSQL } = require('../models/users/users');
 
 const usuariosGet = async (req = request, res = response) => {

@@ -1,5 +1,5 @@
 const express = require('express');
-// const cors = require('cors');
+const cors = require('cors');
 const { dbConnection } = require('../database/config');
 
 class Server {
@@ -7,11 +7,16 @@ class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT || 3001;
+        this.corsOptions = {
+            origin: 'http://127.0.0.1:5173',
+            optionsSuccessStatus: 200
+        }
+
         // Conectar a base de datos
         this.conectarDB();
 
         // Middlawares
-        // this.middlewares();
+        this.middlewares();
 
         this.routes();
     }
@@ -27,7 +32,7 @@ class Server {
 
     middlewares() {
         // CORS
-        // this.app.use(cors())
+        this.app.use(cors(this.corsOptions));
 
         // Lectura y parseo del body
         this.app.use(express.json());
