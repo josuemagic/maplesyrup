@@ -1,16 +1,12 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Login } from "../../components/login/Login";
-
+import { Routes, Route } from 'react-router-dom';
 
 export function LoginRoute() {
   return (
-  <>
-  <BrowserRouter>
-    <Routes>
-      <Route path='/login' element={<Login/>}/>
-    </Routes>
-    </BrowserRouter>
-  </>
+    <>
+      <Routes>
+        <Route path="/prueba" element={<h2>Login Route</h2>} />
+      </Routes>
+    </>
   );
 }
