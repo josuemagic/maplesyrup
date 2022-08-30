@@ -1,37 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function NavBar() {
     return (<>
-        FFDFD3
-        <nav className="navbar navbar-expand-lg" style={{ background: '#B9A6E0' }} >
-            <div className="container-fluid">
-                <a className="navbar-brand" href="#">Navbar</a>
+        <nav className="navbar navbar-expand-lg" style={{ background: '#B9A6E0', margin: '2px 10px 0px 10px', padding: '0.6%' }} >
+            <div className="container-fluid row">
+                <a className="navbar-brand col-lg-4" href="#">Navbar</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                <div className="collapse navbar-collapse col-lg-8 row" id="navbarNavDropdown">
                     <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Home</a>
+                        <li className="nav-item col-lg-2">
+                            <Link className="nav-link" to="home"><strong style={{ fontSize: '20px', margin: '20px' }}>Home</strong></Link>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Features</a>
+                        <li className="nav-item col-lg-2">
+                            <Link className="nav-link" to="about"><strong style={{ fontSize: '20px', margin: '20px' }}>About</strong></Link>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown link
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+                        <li className="nav-item col-lg-2">
+                            <Link className="nav-link" to="login"><strong style={{ fontSize: '20px', margin: '20px' }}>Login</strong></Link>
                         </li>
                     </ul>
                 </div>
+                {/* <form className="d-flex" style={{ margin: '0px 8%' }}>
+                    <input className="form-control me-4 col-sm-3" type="search" placeholder="¿Que estas buscando?..."/>
+                    <button className="btn  col-sm-4" type="submit">Busar</button>
+                </form> */}
             </div>
         </nav>
     </>);

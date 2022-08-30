@@ -1,10 +1,9 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
 import { Login } from "../components/login/Login";
-import { LoginRoute } from "./login/LoginRoute";
 import NotFound from "./not-found/NotFound";
-import 'bootstrap/dist/css/bootstrap.css';
 import { NavBar } from "../components/shared/molecules/NavBar";
+import { Home } from "../components/home/Home";
 
 
 export function AppRouter() {
@@ -14,8 +13,8 @@ export function AppRouter() {
 
     <Routes>
       <Route path='*' element={<NotFound />} />
-      <Route path="/" element={<h1>Home</h1>} />
-      <Route path="/home" element={<h1>Home</h1>} />
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
 
       <Route path="/login/*" element={<Login />} />
 
