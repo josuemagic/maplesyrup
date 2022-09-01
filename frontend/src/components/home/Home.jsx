@@ -5,7 +5,7 @@ import { CustomButtonNavigate } from '../shared/atoms/CustomButtonNavigate';
 export function Home() {
     return (
         <>
-            <div className=".container-md row" style={{ backgroundColor: '#B9A6E0', margin: '0px 10px 0px 10px', padding: '20px' }}>
+            <div className=".container-md row" style={{ margin: '20px 10px 20px 10px', padding: '20px' }}>
                 <div className='col-lg-3 col-sm-1'><CustomButtonNavigate label='Mas Vendido' /></div>
                 <div className='col-lg-3 col-sm-1'><CustomButtonNavigate label='Hombre' /> </div>
                 <div className='col-lg-3 col-sm-1'><CustomButtonNavigate label='Mujer' /></div>
@@ -16,7 +16,7 @@ export function Home() {
                     </form>
                 </div>
             </div>
-            <div className=".container-md row" style={{ backgroundColor: '#B9A6E0', margin: '0px 10px 0px 10px', padding: '20px' }}>
+            <div className=".container-md row" style={{ backgroundColor: 'transparent', margin: '0px 10px 0px 10px', padding: '20px' }}>
                 <div className='col-lg-3 col-sm-1'>Producto1</div>
                 <div className='col-lg-3 col-sm-1'>Producto2</div>
                 <div className='col-lg-3 col-sm-1'>Producto3</div>
