@@ -38,12 +38,4 @@
     width: 100%;
   }
   
-  .btn3::before{
-    width: 100%;
-    height: 0%;
-    transform: translate(-10%,-10%) rotate(45deg);
-  }
-  .btn3:hover::before{
-    height: 100%;
-  }
   
