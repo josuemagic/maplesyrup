@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetListProducts } from '../../redux/actions/products/GetListProducts';
 
 import { CustomButtonNavigate } from '../shared/atoms/CustomButtonNavigate';
+import { CardProducts } from '../shared/molecules/CardProducts';
 
 export function Home() {
 
@@ -34,7 +35,7 @@ export function Home() {
             </div>
 
             <div className=".container-md row" style={{ backgroundColor: '', margin: '0px 10px 0px 10px', padding: '20px' }}>
-                <div className='col-lg-3 col-sm-1'>Producto1</div>
+                <div className='col-lg-3 col-sm-1'><CardProducts /></div>
                 <div className='col-lg-3 col-sm-1'>Producto2</div>
                 <div className='col-lg-3 col-sm-1'>Producto3</div>
                 <div className='col-lg-3 col-sm-1'>Producto4</div>
