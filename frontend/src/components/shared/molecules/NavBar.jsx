@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function NavBar() {
     return (<>
-        <nav className="navbar navbar-expand-lg" style={{ background: '#B9A6E0', margin: '2px 10px 0px 10px', padding: '0.6%' }} >
+        <nav className="navbar navbar-expand-lg" style={{ background: '', margin: '2px 10px 0px 10px', padding: '0.6%' }} >
             <div className="container-fluid row">
                 <a className="navbar-brand col-lg-4" href="#">Navbar</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,10 +22,6 @@ export function NavBar() {
                         </li>
                     </ul>
                 </div>
-                {/* <form className="d-flex" style={{ margin: '0px 8%' }}>
-                    <input className="form-control me-4 col-sm-3" type="search" placeholder="¿Que estas buscando?..."/>
-                    <button className="btn  col-sm-4" type="submit">Busar</button>
-                </form> */}
             </div>
         </nav>
     </>);

@@ -1,12 +1,15 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 import '../../../styles/customButtons.css';
 
-export function CustomButtonNavigate({label = ""}) {
+export function CustomButtonNavigate({ label = "", linkTo = "home" }) {
     return (
         <>
-            <div class="middle">
-                <a href="" className="btnCustom btn1">{label}</a>
-                {/* <a href="" class="btn btn3">Hover Me</a> */}
+            <div className="middle">
+                <Link className="nav-link btnCustom btn1" to={linkTo}><strong className=''>{label}</strong></Link>
+                {/* <Link className="nav-link" to={linkTo}><strong style={{ fontSize: '20px', margin: '20px' }}>{label}</strong></Link> */}
+
             </div>
         </>
     )
