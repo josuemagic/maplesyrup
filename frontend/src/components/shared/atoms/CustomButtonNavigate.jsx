@@ -7,8 +7,7 @@ export function CustomButtonNavigate({ label = "", linkTo = "home" }) {
     return (
         <>
             <div className="middle">
-                <a href="" className="btnCustom btn1">{label}</a>
-                {/* <a href="" class="btn btn3">Hover Me</a> */}
+                <Link className="btnCustom btn1" to={linkTo}>{label}</Link>
             </div>
         </>
     )

@@ -14,8 +14,7 @@ export function AppRouter() {
     <Routes>
       <Route path='*' element={<NotFound />} />
       <Route path="/" element={<Home />} />
-      <Route path="/home" element={<Home />} />
-
+      <Route path="/home/*" element={<Home />} />
       <Route path="/login/*" element={<Login />} />
 
     </Routes>
