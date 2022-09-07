@@ -2,17 +2,18 @@
 /* Menu products */
 
 #containderTopProducts{
-    height: 100%;
+    height: auto;
     width: auto;
-    background: red;
+    background: transparent;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 .rowProducts {
-    height: 40%;
+    height: 20em;
     width: auto;
-    background: rebeccapurple;
+    background: transparent;
     display: flex;
     flex-direction: row;
     margin: 0 0 2em 0;
@@ -55,12 +56,6 @@ input {
     margin: 0 0 0 2em;
 }
 
-
-
-
-
-
-
 /* Phone */
 @media only screen and (max-width: 600px) {
 
@@ -69,19 +64,21 @@ input {
 #containderTopProducts{
     height: 100%;
     width: auto;
-    background: red;
+    background: transparent;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 .rowProducts {
     height: 50em;
     width: 100%;
-    background: rgb(51, 153, 126);
+    background: transparent;
     display: flex;
     flex-direction: column;
     margin: 0 0 14em 0 ;
     padding: 0 0 0 0;
+
 }
 
 .productCard{

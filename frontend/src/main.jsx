@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <div style={{ background: '#fcd1c6', height: '100vh' }}>
+      <div style={{ background: '#fcd1c6', height: 'auto' }}>
         <BrowserRouter>
           <AppRouter />
         </BrowserRouter>

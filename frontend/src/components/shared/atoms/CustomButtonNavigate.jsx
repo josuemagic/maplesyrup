@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import '../../../styles/customButtons.css';
+import '../../../styles/shared/atoms/customButtons/customButtonNavigate.css';
 
 export function CustomButtonNavigate({ label = "", linkTo = "home" }) {
     return (

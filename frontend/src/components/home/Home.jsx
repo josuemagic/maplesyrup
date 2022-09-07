@@ -1,8 +1,8 @@
 import React from 'react';
 import { HomeRoute } from '../../router/home/HomeRouter';
-import '../../styles/customButtons.css';
-
 import { CustomButtonNavigate } from '../shared/atoms/CustomButtonNavigate';
+import { CustomInput } from '../shared/atoms/customInput';
+
 
 export function Home() {
 
@@ -15,8 +15,8 @@ export function Home() {
                 <CustomButtonNavigate label='Mas Vendido' linkTo='sellTop' />
                 <div id='containerForm'>
                     <form className="d-flex">
-                        <input className="form-control" type="search" placeholder="¿Que estas buscando?..." />
-                        <button className="btn btnFormSearch" type="submit">Busar</button>
+                        <CustomInput />
+                        <button className="btn btnFormSearch" type="submit">Buscar</button>
                     </form>
                 </div>
             </div>
