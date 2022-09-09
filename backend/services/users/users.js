@@ -1,5 +1,5 @@
 const { response, request } = require('express');
-const { petitionSQL } = require('../models/users/users');
+const { petitionSQL } = require('../../models/users/users');
 
 const usuariosGet = async (req = request, res = response) => {
 
@@ -9,7 +9,9 @@ const usuariosGet = async (req = request, res = response) => {
             response
         })
     } catch (error) {
-        console.log(error);
+        return res.status(500).json({
+            error: "No se pudo hacer la peticion a la base de datos"
+        })
     }
 }
 
