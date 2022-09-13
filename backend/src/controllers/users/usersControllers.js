@@ -1,7 +1,10 @@
 const { response, request } = require('express');
-const { petitionSQL } = require('../../models/users/users');
+const { petitionSQL } = require('../../models/users/usersModels');
 
 const usuariosGet = async (req = request, res = response) => {
+
+    // Aca llaman SOLAMENTE a services y el sercices llama al modelo 
+    // y retorna la respuesta de la base de datos
 
     try {
         let response = await petitionSQL('SELECT * FROM users');

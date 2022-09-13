@@ -18,7 +18,7 @@ class Server {
         // Middlawares
         this.middlewares();
 
-        this.routes();
+        // this.routes();
     }
 
     async conectarDB() {

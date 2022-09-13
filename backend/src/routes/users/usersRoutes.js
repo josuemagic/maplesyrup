@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { usuariosGet, ususariosPost, ususariosPut, ususariosDelete, ususariosPatch } = require('../../services/users/users');
+const { usuariosGet, ususariosPost, ususariosPut, ususariosDelete, ususariosPatch } = require('../../controllers/users/usersControllers');
 
 const router = Router();
 
