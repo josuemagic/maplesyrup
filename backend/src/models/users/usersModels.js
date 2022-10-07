@@ -1,8 +1,8 @@
 const { conexion } = require('../../database/config');
 
-function petitionSQL(sql) {
+function usuariosGetModels() {
     return new Promise((resolve, reject) => {
-        conexion.query(sql, function (error, result, field) {
+        conexion.query("SELECT * FROM users", function (error, result, field) {
             if (error)
                 return reject(error);
             return resolve(result);
@@ -11,5 +11,5 @@ function petitionSQL(sql) {
 }
 
 module.exports = {
-    petitionSQL,
+    usuariosGetModels,
 }

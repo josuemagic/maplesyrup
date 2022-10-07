@@ -1,54 +1,44 @@
-const { response, request } = require('express');
-const { petitionSQL } = require('../../models/users/usersModels');
+const { usuariosGetModels } = require("../../models/users/usersModels");
 
-const usuariosGet = async (req = request, res = response) => {
+const usuariosGetService = async () => {
+  try {
+    let response = await usuariosGetModels();
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
 
-    try {
-        let response = await petitionSQL('SELECT * FROM users');
-        return res.status(200).json({
-            response
-        })
-    } catch (error) {
-        return res.status(500).json({
-            error: "No se pudo hacer la peticion a la base de datos"
-        })
-    }
-}
+const ususariosPostServices = async (req, res) => {
+  const body = req.body;
 
-const ususariosPost = async (req, res) => {
+  res.json({
+    msg: "post API - controlador",
+  });
+};
 
-    const body = req.body;
+const ususariosPutServices = (req, res) => {
+  res.json({
+    msg: "put API - controlador",
+  });
+};
 
-    res.json({
-        msg: 'post API - controlador'
-    })
-}
+const ususariosPatchServices = (req, res) => {
+  res.json({
+    msg: "patch API - controlador",
+  });
+};
 
-const ususariosPut = (req, res) => {
-
-    res.json({
-        msg: 'put API - controlador',
-    })
-}
-
-const ususariosPatch = (req, res) => {
-    res.json({
-        msg: 'patch API - controlador'
-    })
-}
-
-const ususariosDelete = (req, res) => {
-    res.json({
-        msg: 'delete API - controlador'
-    })
-}
-
-
+const ususariosDeleteServices = (req, res) => {
+  res.json({
+    msg: "delete API - controlador",
+  });
+};
 
 module.exports = {
-    usuariosGet,
-    ususariosPost,
-    ususariosPut,
-    ususariosPatch,
-    ususariosDelete
-}
+  usuariosGetService,
+  ususariosPostServices,
+  ususariosPutServices,
+  ususariosPatchServices,
+  ususariosDeleteServices,
+};
