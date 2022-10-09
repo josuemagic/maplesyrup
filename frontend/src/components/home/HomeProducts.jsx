@@ -24,74 +24,19 @@ export function HomeProducts() {
 
     return (
         <>
-            <div id='containderTopProducts'>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                </div>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                </div>
-                
+            <div id='containerProducts'>
 
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                
-
-                {/* <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                
-              
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div> */}
-              
-            
-
+                {products.map((product) => {
+                    return <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2
+                        title="Titulo"
+                        price='Precio'
+                        image="https://res.cloudinary.com/dbi5rhmrs/image/upload/v1665253742/cld-sample-3.jpg"
+                    /></div>
+                })}
 
                 {loading ? <h1>Cargando</h1> : ''}
             </div>
-            
+
         </>
     )
 }

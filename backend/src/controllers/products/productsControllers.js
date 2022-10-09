@@ -20,7 +20,8 @@ const productsPost = async (req, res) => {
     const body = req.body;
 
     res.json({
-        msg: 'post API - controlador'
+        msg: 'post API - controlador',
+        body
     })
 }
 

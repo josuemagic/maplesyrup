@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
     fetchProducts,
     fetchProductsFailure,
@@ -10,9 +11,11 @@ import {
 
 export const GetListProducts = () => async (dispatch) => {
 
+    const { data } = await axios.post('/api/Projects/AreasAttention');
+
     dispatch(fetchProducts());
 
     setTimeout(() => {
-        dispatch(fetchProductsSuccess([1, 2, 3, 4, 5]));
+        dispatch(fetchProductsSuccess([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]));
     }, 5000);
 }

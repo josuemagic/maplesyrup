@@ -1,17 +1,13 @@
 const { response, request } = require('express');
-const { petitionSQL } = require('../../models/users/usersModels');
+const { newProduct } = require('../../models/products/producstModels');
 
 const usuariosGet = async (req = request, res = response) => {
 
     try {
-        let response = await petitionSQL('SELECT * FROM users');
-        return res.status(200).json({
-            response
-        })
+        let response = await newProduct();
+        return response;
     } catch (error) {
-        return res.status(500).json({
-            error: "No se pudo hacer la peticion a la base de datos"
-        })
+        return error;
     }
 }
 

@@ -30,6 +30,7 @@ const ususariosPost = async (req, res) => {
 
   res.json({
     msg: "post API - controlador",
+    body
   });
 };
 
