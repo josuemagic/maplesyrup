@@ -1,50 +1,47 @@
-const { response, request } = require('express');
-const { newProduct } = require('../../models/products/producstModels');
+const { response, request } = require("express");
+const { newProductModel } = require("../../models/products/producstModels");
 
-const usuariosGet = async (req = request, res = response) => {
+const productsGetServices = async (data) => {
+  // try {
+  //     let response = await newProduct();
+  //     return response;
+  // } catch (error) {
+  //     return error;
+  // }
+};
 
-    try {
-        let response = await newProduct();
-        return response;
-    } catch (error) {
-        return error;
-    }
-}
+const productsPostServices = async (data) => {
+  // Creamos el path con el cual se va a guardar la imagen
+  // Subimos el archivo a cloudinary
+  // Vamos al newProductModel
+  // Guardamos el path en la base de datos
 
-const ususariosPost = async (req, res) => {
+  console.log(data.body);
+  console.log(data.files);
+};
 
-    const body = req.body;
+const productsPutServices = (req, res) => {
+  res.json({
+    msg: "put API - controlador",
+  });
+};
 
-    res.json({
-        msg: 'post API - controlador'
-    })
-}
+const productsPatchServices = (req, res) => {
+  res.json({
+    msg: "patch API - controlador",
+  });
+};
 
-const ususariosPut = (req, res) => {
-
-    res.json({
-        msg: 'put API - controlador',
-    })
-}
-
-const ususariosPatch = (req, res) => {
-    res.json({
-        msg: 'patch API - controlador'
-    })
-}
-
-const ususariosDelete = (req, res) => {
-    res.json({
-        msg: 'delete API - controlador'
-    })
-}
-
-
+const productsDeleteServices = (req, res) => {
+  res.json({
+    msg: "delete API - controlador",
+  });
+};
 
 module.exports = {
-    usuariosGet,
-    ususariosPost,
-    ususariosPut,
-    ususariosPatch,
-    ususariosDelete
-}
+  productsGetServices,
+  productsPostServices,
+  productsPutServices,
+  productsPatchServices,
+  productsDeleteServices,
+};

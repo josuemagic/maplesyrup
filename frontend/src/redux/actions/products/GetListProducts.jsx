@@ -11,7 +11,7 @@ import {
 
 export const GetListProducts = () => async (dispatch) => {
 
-    const { data } = await axios.post('/api/Projects/AreasAttention');
+    // const { data } = await axios.post('/api/Projects/AreasAttention');
 
     dispatch(fetchProducts());
 
