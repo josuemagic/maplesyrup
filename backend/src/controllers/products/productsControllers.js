@@ -1,39 +1,44 @@
 const { response, request } = require("express");
 const {
+  productsGetServices,
   productsPostServices,
 } = require("../../services/products/productsServices");
 
 const productsGet = async (req = request, res = response) => {
-  // Aca llaman SOLAMENTE a services y el sercices llama al modelo
-  // y retorna la respuesta de la base de datos
+ 
 
-  // Aqui solamente se obtiene la req, se hace la
-  // validacion si esta o no, (pensando en "moment")
-  // para la validacion de datos
-
-  res.json({
-    msg: "get API - controlador",
-  });
+  try {
+    let response = await productsGetServices();
+    return res.status(200).json({
+      data: response
+    });
+  } catch (error) {
+    res.status(500).json({
+      msg: "It couldn't get products ",
+      error,
+    });
+  }
 };
 
 const productsPost = async (req = request, res) => {
-  const { body } = req;
+  const { name, count, price, typeProduct } = req.body;
+
+  if (!name || !count || !price || !typeProduct || !req.files) {
+    return res.status(400).json({
+      msg: "Necesary Elements: Name, Count, Price, typeProduct and fileImage",
+    });
+  }
 
   try {
     let response = await productsPostServices(req);
     return res.status(200).json({
-      msg: "File Uploaded",
+      msg: "Product Uploaded",
     });
   } catch (error) {
     res.status(500).json({
       error,
     });
   }
-
-  res.json({
-    msg: "post API - controlador",
-    body,
-  });
 };
 
 const productsPut = (req, res) => {

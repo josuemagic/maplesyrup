@@ -11,7 +11,7 @@ export default function CardProductsv2({ title = "Titulo", price = "precio", idP
                     <div className="contenedor-info">
                         <div className="info">
                             <p className="titulo">{title}</p>
-                            <p className="titulo">{price}</p>
+                            <p className="titulo">Precio: ${price}</p>
                             <span className="categoria">
                                 <span className="categoria2">
                                     <button className='buttonBuy'>Comprar</button>

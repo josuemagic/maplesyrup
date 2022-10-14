@@ -15,6 +15,7 @@ export function AppRouter() {
       <Route path='*' element={<NotFound />} />
       <Route path="/" element={<Home />} />
       <Route path="/home/*" element={<Home />} />
+      <Route path="/sellTop" element={<h2>Mas Vendido AppRouter</h2>} />
       <Route path="/login/*" element={<Login />} />
 
     </Routes>

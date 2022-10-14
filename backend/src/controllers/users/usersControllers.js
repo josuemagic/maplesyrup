@@ -25,12 +25,11 @@ const usuariosGet = async (req = request, res = response) => {
   }
 };
 
-const ususariosPost = async (req, res) => {
-  const body = req.body;
-
+const newUserPostController = async (req, res) => {
+  
   res.json({
     msg: "post API - controlador",
-    body
+    body: res.body
   });
 };
 
@@ -54,7 +53,7 @@ const ususariosDelete = (req, res) => {
 
 module.exports = {
   usuariosGet,
-  ususariosPost,
+  newUserPostController,
   ususariosPut,
   ususariosPatch,
   ususariosDelete,

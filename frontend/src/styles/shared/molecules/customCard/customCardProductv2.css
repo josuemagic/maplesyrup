@@ -26,10 +26,11 @@
 .contenedor-card-item-wrapper {
 	overflow: hidden;
 	position: relative !important;
-	background: #3E2723;
+	background: transparent;
 	border-radius: 5px;
-    width: 20em; /* tamaño de los contenedores donde esta la imagen*/
+    width: 16em; /* tamaño de los contenedores donde esta la imagen*/
     height: 15em;
+	text-align: center;
 }
 
 .contenedor-card-item img {
