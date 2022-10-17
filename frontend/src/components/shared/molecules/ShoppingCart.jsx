@@ -5,17 +5,23 @@ import { FaShoppingCart } from 'react-icons/fa';
 
 export function ShoppingCart() {
 
-    const [dataShoppingCart, setData] = useState({});
-
+    const [dataShoppingCart, setDataShoppingCart] = useState({});
 
 
     // Obtenemos la lista del carrito cada vez
     // que cambie la propiedad listShopping 
     // en el slice
-    useEffect(() => {
-        const carrito = JSON.parse(localStorage.getItem('shopping_car'));
 
+    useEffect(() => {
+        // Convertir el dato que obtenemos en un arreglo
+        setDataShoppingCart(localStorage.getItem("shopping_car")) || [];
     }, [localStorage])
+
+    useEffect(() => {
+        console.log(dataShoppingCart);
+    }, [dataShoppingCart])
+
+    const array = [1,2,3,4,5];
 
 
     return (<>
@@ -25,11 +31,13 @@ export function ShoppingCart() {
                 <FaShoppingCart size={20} color="black" />
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownmenu">
-                <a class="dropdown-item" href="#">Dropdown One</a>
-                <a class="dropdown-item" href="#">Dropdown Two</a>
-                <a class="dropdown-item" href="#">Dropdown Three</a>
+
+                {array.map((product, index) => {
+                    return <div class="dropdown-item" href="#"><a>{product}</a></div>
+                })}
             </div>
         </div>
 
     </>);
+    // <a class="dropdown-item" href="#">{product}</a>
 }

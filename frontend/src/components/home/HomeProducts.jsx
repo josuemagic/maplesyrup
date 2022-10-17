@@ -16,10 +16,6 @@ export function HomeProducts() {
         dispatch(GetListProducts());
     }, [])
 
-    useEffect(() => {
-        console.log(products);
-    }, [products])
-
     return (
         <>
             <div id='containerProducts'>

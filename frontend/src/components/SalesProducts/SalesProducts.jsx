@@ -13,7 +13,6 @@ export function SalesProducts() {
 
     const { loading, products, error } = useSelector((state) => state.products.list);
 
-
     return (<>
 
         <div id='containerProducts'>

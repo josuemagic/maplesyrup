@@ -4,19 +4,42 @@ import whitNot_Image from '../../../../public/pictures/whitNot_Image.png';
 
 export default function CardProductsv2({ id_product = "", title = "Titulo", price = "precio", image = whitNot_Image }) {
 
+
+    const [dataShopping, setDataShopping] = useState([])
+
+    useEffect(() => {
+        // console.log(dataShopping);
+    }, [dataShopping])
+
+    useEffect(() => {
+        setDataShopping(JSON.parse(localStorage.getItem("shopping_car")) || []);
+    }, [])
+
+
+
     const handleAddProductShoppingCart = (id_product, title, price, image_path) => {
 
         const objectData = {
             id_product,
             title,
             price,
-            image_path
+            image_path,
+            count: 1
         }
+
+        // Get data from localstorage
+        // It's most a array 
+        const array = dataShopping;
+
+        // Add the product join data localstorage
+        array.push(objectData);
+        console.log(array);
+
+        // Add data to localstorage
+        localStorage.setItem("shopping_car", JSON.stringify(array));
     }
 
     const prueba = () => {
-        // const shopping_car = JSON.parse(localStorage.getItem('shopping_car'));
-        // console.log(shopping_car);
         localStorage.clear()
     }
 

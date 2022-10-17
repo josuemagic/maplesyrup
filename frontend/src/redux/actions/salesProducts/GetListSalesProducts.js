@@ -4,7 +4,7 @@ import {
     fetchProductsFailure,
     fetchProductsSuccess,
     fetchProductsAsync
-} from "../../slices/products";
+} from "../../slices/managmentProducts/products/listProductsSlice";
 
 // Function for get all products
 // The function will have a param for get product for parts
