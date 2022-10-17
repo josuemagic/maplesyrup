@@ -5,6 +5,10 @@ import NotFound from "./not-found/NotFound";
 import { NavBar } from "../components/shared/molecules/NavBar";
 import { Home } from "../components/home/Home";
 
+import { SellTopProducts } from "../components/sellTops/SellTopProducts";
+import { ListNewProducts } from "../components/ListNewProducts/ListNewProducts";
+import { SalesProducts } from "../components/SalesProducts/SalesProducts";
+
 
 export function AppRouter() {
   return (<>
@@ -15,7 +19,9 @@ export function AppRouter() {
       <Route path='*' element={<NotFound />} />
       <Route path="/" element={<Home />} />
       <Route path="/home/*" element={<Home />} />
-      <Route path="/sellTop" element={<h2>Mas Vendido AppRouter</h2>} />
+      <Route path="/SellTop" element={<SellTopProducts />} />
+      <Route path="/NewsProducts" element={<ListNewProducts />} />
+      <Route path="/OfferProducts" element={<SalesProducts />} />
       <Route path="/login/*" element={<Login />} />
 
     </Routes>

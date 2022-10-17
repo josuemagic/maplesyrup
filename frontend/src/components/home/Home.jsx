@@ -10,9 +10,9 @@ export function Home() {
     return (
         <>
             <div className='containerTopNavBar'>
-                <CustomButtonNavigate label='Mas Vendido' linkTo='sellTop' />
-                <CustomButtonNavigate label='Nuevos' linkTo='sellTop' />
-                <CustomButtonNavigate label='En Oferta' linkTo='sellTop' />
+                <CustomButtonNavigate label='Mas Vendido' linkTo='SellTop' />
+                <CustomButtonNavigate label='Nuevos' linkTo='NewsProducts' />
+                <CustomButtonNavigate label='En Oferta' linkTo='OfferProducts' />
                 <div id='containerForm'>
                     <form className="d-flex">
                         <CustomInput />

@@ -24,9 +24,10 @@ export function HomeProducts() {
         <>
             <div id='containerProducts'>
 
-                {products.map((product) => {
-                    return <div className='col-lg-3 col-sm-1 productCard'>
+                {products.map((product, index) => {
+                    return <div key={index} className='col-lg-3 col-sm-1 productCard'>
                         <CardProductsv2
+                            id_product={product.id_product}
                             title={product.name}
                             price={product.price}
                             image={product.path_image}

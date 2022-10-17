@@ -49,18 +49,18 @@ const object = [
 ]
 
 
-export const GetListProducts = () => async (dispatch) => {
+export const GetListSellTopsProducts = () => async (dispatch) => {
 
     try {
         dispatch(fetchProducts());
         // const { data } = await axios.post('/api/Projects/AreasAttention');
-        const { data } = await axios.get('http://localhost:3001/api/products');
-        console.log(data.data);
-        dispatch(fetchProductsSuccess(data.data));
+        // const { data } = await axios.get('http://localhost:3001/api/products');
+        // console.log(data.data);
+        dispatch(fetchProductsSuccess(object));
 
         // let array = [].concat(data.data, object , object, object)
         // dispatch(fetchProductsAsync());
-        
+
         // setTimeout(() => {
         //     dispatch(fetchProductsSuccess(array))
         // }, 5000);
@@ -75,7 +75,7 @@ export const GetListProducts = () => async (dispatch) => {
         //     dispatch(fetchProductsSuccess(array3))
         // }, 15000);
         // console.log(array);
-        
+
     } catch (error) {
         dispatch(fetchProductsFailure(error));
     }
