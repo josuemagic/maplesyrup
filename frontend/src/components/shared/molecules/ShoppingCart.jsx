@@ -1,43 +1,66 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { FaShoppingCart } from 'react-icons/fa';
-
+import React, { useState, useEffect } from "react";
+import { FaShoppingCart, FaTrashAlt } from 'react-icons/fa';
 
 export function ShoppingCart() {
 
     const [dataShoppingCart, setDataShoppingCart] = useState({});
+    const [loadingCart, setLoadingCart] = useState(false);
 
+    // Delete element of shopping cart
+    const handleDeleteElement = (indexElement) => {
+        const elementsShoppingCart = JSON.parse(localStorage.getItem("shopping_cart")) || [];
+        const newLements = elementsShoppingCart.filter((element, index) => {
+            return indexElement != index;
+        })
 
-    // Obtenemos la lista del carrito cada vez
-    // que cambie la propiedad listShopping 
-    // en el slice
+        // Update of data from shopping_cart
+        localStorage.setItem("shopping_cart", JSON.stringify(newLements));
+
+        console.log(newLements);
+        setLoadingCart(true);
+    }
 
     useEffect(() => {
-        // Convertir el dato que obtenemos en un arreglo
-        setDataShoppingCart(localStorage.getItem("shopping_car")) || [];
+        // Convert data in array
+        setDataShoppingCart(JSON.parse(localStorage.getItem("shopping_cart")) || []);
     }, [localStorage])
 
     useEffect(() => {
-        console.log(dataShoppingCart);
-    }, [dataShoppingCart])
+        setTimeout(() => {
+            setLoadingCart(false);
+        }, 2000);
+    }, [loadingCart])
 
-    const array = [1,2,3,4,5];
+    // useEffect(() => {
+    //     console.log(elementsShoppingCart);
+    // }, [])
 
+
+    const elementsShoppingCart = JSON.parse(localStorage.getItem("shopping_cart")) || [];
 
     return (<>
+        {loadingCart ?
+            "cargando"
+            :
+            <div className="dropdown me-5">
+                <button className="btn dropdown-toggle" type="button" id="dropdownmenu" data-bs-toggle="dropdown" aria-expanded="false">
+                    <FaShoppingCart size={20} color="black" />
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownmenu">
 
-        <div class="dropdown me-5">
-            <button class="btn dropdown-toggle" type="button" id="dropdownmenu" data-bs-toggle="dropdown" aria-expanded="false">
-                <FaShoppingCart size={20} color="black" />
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownmenu">
-
-                {array.map((product, index) => {
-                    return <div class="dropdown-item" href="#"><a>{product}</a></div>
-                })}
+                    {elementsShoppingCart.map((product, index) => {
+                        return <div className="dropdown-item" href="#">
+                            <img width={50} height={50} src={product.image_path} alt="" className="me-3" />
+                            <a className="me-2">{product.title}</a>
+                            <button className="btn btn-danger m-2" onClick={() => {
+                                handleDeleteElement(index)
+                            }} ><FaTrashAlt /></button>
+                        </div>
+                    })}
+                    <button className="btn btn-primary w-100 mt-3">Ir al carrito</button>
+                </div>
             </div>
-        </div>
+        }
 
     </>);
-    // <a class="dropdown-item" href="#">{product}</a>
 }

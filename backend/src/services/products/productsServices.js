@@ -1,7 +1,10 @@
 const { response, request } = require("express");
 const {
   getProducts,
+  newProductsGetModels,
   newProductModel,
+  topSellProductsGetModels,
+  inOfferProductsGetModels
 } = require("../../models/products/producstModels");
 
 // Cloudinary configuration
@@ -11,6 +14,33 @@ cloudinary.config(process.env.CLOUDINARY_URL);
 const productsGetServices = async () => {
   try {
     let response = await getProducts();
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+const newProductsGetServices = async () => {
+  try {
+    let response = await newProductsGetModels();
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+const topSellProductsGetServices = async () => {
+  try {
+    let response = await topSellProductsGetModels();
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+const infOfferProductsGetServices = async () => {
+  try {
+    let response = await inOfferProductsGetModels();
     return response;
   } catch (error) {
     return error;
@@ -32,7 +62,7 @@ const productsPostServices = async (data) => {
       fileImage.tempFilePath
     );
     data.body.pathImage = secure_url;
-    // Vamos al newProductModel
+    // Go to newProductModel
     const response = newProductModel(data.body);
     return response;
   } catch (error) {
@@ -40,28 +70,30 @@ const productsPostServices = async (data) => {
   }
 };
 
-const productsPutServices = (req, res) => {
-  res.json({
-    msg: "put API - controlador",
-  });
-};
 
-const productsPatchServices = (req, res) => {
-  res.json({
-    msg: "patch API - controlador",
-  });
-};
 
-const productsDeleteServices = (req, res) => {
-  res.json({
-    msg: "delete API - controlador",
-  });
-};
+// const productsPutServices = (req, res) => {
+//   res.json({
+//     msg: "put API - controlador",
+//   });
+// };
+
+// const productsPatchServices = (req, res) => {
+//   res.json({
+//     msg: "patch API - controlador",
+//   });
+// };
+
+// const productsDeleteServices = (req, res) => {
+//   res.json({
+//     msg: "delete API - controlador",
+//   });
+// };
 
 module.exports = {
   productsGetServices,
+  newProductsGetServices,
+  topSellProductsGetServices,
+  infOfferProductsGetServices,
   productsPostServices,
-  productsPutServices,
-  productsPatchServices,
-  productsDeleteServices,
 };

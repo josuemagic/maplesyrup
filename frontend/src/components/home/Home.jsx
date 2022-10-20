@@ -5,8 +5,6 @@ import { CustomInput } from '../shared/atoms/customInput';
 
 
 export function Home() {
-
-
     return (
         <>
             <div className='containerTopNavBar'>

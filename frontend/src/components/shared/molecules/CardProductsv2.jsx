@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import '../../../styles/shared/molecules/customCard/customCardProductv2.css';
 import whitNot_Image from '../../../../public/pictures/whitNot_Image.png';
+import { fetchShoppingCart } from '../../../redux/slices/managmentProducts/shoppingCart';
 
 export default function CardProductsv2({ id_product = "", title = "Titulo", price = "precio", image = whitNot_Image }) {
 
+    const dispatch = useDispatch();
 
-    const [dataShopping, setDataShopping] = useState([])
+    const { loading } = useSelector((state) => state.shopping_cart.list);
+
+    const [dataShopping, setDataShopping] = useState([]);
 
     useEffect(() => {
-        // console.log(dataShopping);
-    }, [dataShopping])
-
-    useEffect(() => {
-        setDataShopping(JSON.parse(localStorage.getItem("shopping_car")) || []);
+        setDataShopping(JSON.parse(localStorage.getItem("shopping_cart")) || []);
     }, [])
-
-
 
     const handleAddProductShoppingCart = (id_product, title, price, image_path) => {
 
@@ -33,10 +32,9 @@ export default function CardProductsv2({ id_product = "", title = "Titulo", pric
 
         // Add the product join data localstorage
         array.push(objectData);
-        console.log(array);
 
         // Add data to localstorage
-        localStorage.setItem("shopping_car", JSON.stringify(array));
+        localStorage.setItem("shopping_cart", JSON.stringify(array));
     }
 
     const prueba = () => {
@@ -61,7 +59,8 @@ export default function CardProductsv2({ id_product = "", title = "Titulo", pric
                                         }}>Comprar</button>
                                     <button className='buttonBuy' onClick={
                                         () => {
-                                            handleAddProductShoppingCart(id_product, title, price, image)
+                                            handleAddProductShoppingCart(id_product, title, price, image);
+                                            dispatch(fetchShoppingCart(true));
                                         }
                                     }>Carro</button>
                                 </span>

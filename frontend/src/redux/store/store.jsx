@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { ProductsReducer } from '../slices/managmentProducts/products';
+import { ShoppingCartSliceReducer } from '../slices/managmentProducts/shoppingCart';
 
 // import {ProductsManagmentReducer} from '../slices/managmentProducts/index';
 
@@ -7,7 +8,8 @@ import { ProductsReducer } from '../slices/managmentProducts/products';
 // El index que esta en products managment
 
 const combineReducer = combineReducers({
-    products: ProductsReducer
+    products: ProductsReducer,
+    shopping_cart: ShoppingCartSliceReducer
 });
 
 const rootReducer = (state, action) => {

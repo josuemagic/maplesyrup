@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import { ShoppingCart } from "./ShoppingCart";
+import { fetchShoppingCart } from '../../../redux/slices/managmentProducts/shoppingCart/listShpppingCart';
+import loginMapleSyrup from '../../../../public/pictures/loginMapleSyrup.gif';
+import logoMapleSyrup from '../../../../public/pictures/logoMapleSyrup.png';
+
 
 export function NavBar() {
+
+    const dispatch = useDispatch();
+
+    const { loading } = useSelector((state) => state.shopping_cart.list);
+
+    useEffect(() => {
+        if (loading) {
+            setTimeout(() => {
+                dispatch(fetchShoppingCart(false));
+            }, 2000);
+
+        }
+    }, [loading])
+
     return (<>
         <nav className="navbar navbar-expand-lg" style={{ background: '', margin: '2px 10px 2em 10px', padding: '0.6%' }} >
             <div className="container-fluid row">
@@ -24,7 +43,11 @@ export function NavBar() {
                     </ul>
                 </div>
                 <div className="col-lg-4">
-                    <ShoppingCart />
+                    {loading ?
+                        <img width={100} height={10} src={loginMapleSyrup} alt="" />
+                        :
+                        <ShoppingCart />
+                    }
                 </div>
             </div>
         </nav>

@@ -9,6 +9,51 @@ function getProducts() {
   });
 }
 
+function newProductsGetModels() {
+  return new Promise((resolve, reject) => {
+    conexion.query(`SELECT * FROM products p 
+                    ORDER BY p.date_created DESC`, function (error, result, field) {
+      if (error) return reject(error);
+      return resolve(result);
+    });
+  });
+}
+
+function topSellProductsGetModels() {
+  return new Promise((resolve, reject) => {
+    conexion.query(`
+               SELECT p.id_product, p.name, p.price,
+                     p.typeProduct, p.path_image,
+                     p.count, p.date_created,
+                     i.number_sales
+               from products p
+               INNER JOIN product_information i
+               ON p.id_product = i.id_product
+               ORDER BY i.number_sales DESC`, function (error, result, field) {
+      if (error) return reject(error);
+      return resolve(result);
+    });
+  });
+}
+
+function inOfferProductsGetModels() {
+  return new Promise((resolve, reject) => {
+    conexion.query(`
+               SELECT p.id_product, p.name, p.price,
+		                p.typeProduct, p.path_image,
+                    p.count, p.date_created,
+                    i.number_sales
+               from products p
+               INNER JOIN product_information i
+               ON p.id_product = i.id_product
+               WHERE i.in_offer = 1
+               ORDER BY i.number_sales DESC`, function (error, result, field) {
+      if (error) return reject(error);
+      return resolve(result);
+    });
+  });
+}
+
 function newProductModel(data) {
   const { name, count, price, typeProduct, pathImage, dateCreated } = data;
 
@@ -26,5 +71,8 @@ function newProductModel(data) {
 
 module.exports = {
   getProducts,
+  newProductsGetModels,
   newProductModel,
+  topSellProductsGetModels,
+  inOfferProductsGetModels
 };

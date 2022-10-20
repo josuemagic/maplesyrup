@@ -3,7 +3,7 @@ const { petitionSQL } = require("../../models/users/usersModels");
 
 const {
   usuariosGetService,
-  ususariosPostServices,
+  newUserPostServices,
   //   ususariosPut,
   //   ususariosPatch,
   //   ususariosDelete,
@@ -26,11 +26,19 @@ const usuariosGet = async (req = request, res = response) => {
 };
 
 const newUserPostController = async (req, res) => {
-  
-  res.json({
-    msg: "post API - controlador",
-    body: res.body
-  });
+
+  try {
+    let response = await newUserPostServices(req.body);
+
+    return res.status(200).json({
+      msg: "user created"
+    })
+
+  } catch (error) {
+    return res.status(500).json({
+      msg: "error creating user"
+    })
+  }
 };
 
 const ususariosPut = (req, res) => {

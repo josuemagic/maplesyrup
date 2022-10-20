@@ -1,11 +1,13 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
+import LoginUser from "./LoginUser";
 
 export function LoginRoute() {
   return (
     <>
       <Routes>
-        <Route path="/prueba" element={<h2>Login Route</h2>} />
+        <Route path="/LoginUser" element={<LoginUser />} />
+        <Route path="/LoginRegister" element={<LoginUser />} />
       </Routes>
     </>
   );

@@ -4,6 +4,7 @@ import { Login } from "../components/login/Login";
 import NotFound from "./not-found/NotFound";
 import { NavBar } from "../components/shared/molecules/NavBar";
 import { Home } from "../components/home/Home";
+import { About } from "../components/about/About";
 
 import { SellTopProducts } from "../components/sellTops/SellTopProducts";
 import { ListNewProducts } from "../components/ListNewProducts/ListNewProducts";
@@ -23,6 +24,7 @@ export function AppRouter() {
       <Route path="/NewsProducts" element={<ListNewProducts />} />
       <Route path="/OfferProducts" element={<SalesProducts />} />
       <Route path="/login/*" element={<Login />} />
+      <Route path="/about/*" element={<About />} />
 
     </Routes>
   </>);
