@@ -12,6 +12,7 @@ export function NavBar() {
 
     const dispatch = useDispatch();
 
+
     const { loading } = useSelector((state) => state.shopping_cart.list);
     const { loading: loadingNewUser, success, error, userData
     } = useSelector((state) => state.users.new);

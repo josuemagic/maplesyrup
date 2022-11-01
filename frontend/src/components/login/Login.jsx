@@ -1,24 +1,26 @@
 import React, { useEffect } from "react";
 import { useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LoginRoute } from "../../router/login/LoginRoute";
-import { MessageSuccess, MessageError } from '../shared/molecules/AlertMessages';
+import { MessageError } from '../shared/molecules/AlertMessages';
 
 export function Login() {
 
+  const navigate = useNavigate();
+
   const { loading, success, error, userData } = useSelector((state) => state.users.new);
 
-  const { uniqueID, name: names, email, password } = userData;
+  const { id_user_encrypted, names, email, password } = userData;
 
   // Root Permission
   // "Root Permission" give us access for others secctions and actions
   // If we want an user to have the "Root Permission"
   // We must add id of user en "rootList"
   // DON'T CHANGE the variable name or structure
-  const rootList = [1, 2, 3, 4, 5];
+  const rootList = ["950e6631-b174-421c-a6d2-c509a9248035"];
 
   useEffect(() => {
-    if (success && rootList.includes(userData.id_user)) {
+    if (success && rootList.includes(userData.id_user_encrypted)) {
       localStorage.setItem('XMW-183DM', 'XMW-193DM');
     }
   }, [success, userData])
@@ -28,7 +30,7 @@ export function Login() {
   useEffect(() => {
     if (success && userData) {
 
-      localStorage.setItem('id_user', uniqueID);
+      localStorage.setItem('id_user', id_user_encrypted);
       localStorage.setItem('names', names);
       localStorage.setItem('email', email);
       localStorage.setItem('password', password);
@@ -39,16 +41,12 @@ export function Login() {
 
   }, [success, userData])
 
-  if (success) {
-    return (<>
-      <MessageSuccess message="Usuario creado" />
-      <h1>
-        <Link to={'/home'}>Ir a explorar</Link>
-      </h1>
-    </>)
+  if (success && userData) {
+    navigate('/home');
+
   }
 
-  if (error) {
+  if (error && !success) {
     return (<>
       <MessageError message={error} />
       <h1>

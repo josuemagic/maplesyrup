@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import '../../styles/buyProducts/buyProducts.css';
 import { GetInformationProductById } from '../../redux/actions/buyProducts/GetInformationProductById'
 import { fetchShoppingCart } from '../../redux/slices/managmentProducts/shoppingCart';
 import loginMapleSyrup from '../../../public/pictures/loginMapleSyrup.gif';
+import '../../styles/buyProducts/buyProducts.css';
 
 export function BuyProducts() {
 
@@ -101,8 +101,11 @@ export function BuyProducts() {
                     </div>
                 </div>
             }
-            <p id="textOfCompany">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas officia quo, commodi praesentium doloremque obcaecati dolore illum non, eum aperiam porro! Odio corporis doloremque magni nihil, dolorem consequatur rerum consequuntur.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit blanditiis laboriosam iste assumenda quibusdam modi accusamus incidunt, atque explicabo eligendi at unde ducimus soluta enim nihil rem delectus fugiat. Aliquid?</p>
+            <p id="textOfCompany">Si no esta registrado, por favor regístrese para poder hacer compras en Maple Syrup, no le tomará más de 5 minutos.
+                Seleccione el producto deseado para visualizar los detalles, puede buscar un producto en específico o puede buscar
+                las categorías en el menú principal; agregue uno varios productos al carrito, introduzca los datos de su tarjeta para
+                confirmar la compra y su producto llegará hasta su domicilio en breve. El costo de envío estará dado en función de la
+                zona en que se solicite. le garantizamos la mejor experiencia de compras en línea.</p>
         </>
     );
 }

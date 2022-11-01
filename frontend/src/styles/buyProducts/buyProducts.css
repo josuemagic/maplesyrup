@@ -93,12 +93,16 @@
 }
 
 #textOfCompany {
-    font-family: var(--font-family);
+    display: flex;
+    flex-direction: row;
+    /* font-family: var(--font-family); */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
     font-size: larger;
     text-align: center;
     height: 20em;
+    padding: 0 10% 0 10%;
 }
-
 
 /* Phone */
 @media only screen and (max-width: 600px) { 

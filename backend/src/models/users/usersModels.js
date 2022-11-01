@@ -68,7 +68,7 @@ function editInformationUserModels(data) {
               SET names = '${name}', last_name = '${last_name}', second_last_name = '${second_last_name}', 
               email = '${email}', password = '${password}', telephone = '${telephone}', 
               gender = '${gender}', birth_date = '${birth_date}' 
-              WHERE u.id_user = '${id_user}'`,
+              WHERE u.id_user_encrypted = '${id_user}'`,
             function (error, result, field) {
                 if (error)
                     return reject(error);
@@ -90,7 +90,7 @@ function editInformationDirectionsUserModels(data) {
             SET country = 'Mexico', state = '${state}', city = '${city}', postal_code = '${postal_code}',
             suburb = '${suburb}', street = '${state}', first_heighboring_street = '${first_heighboring_street}',
             second_heighboring_street = '${second_heighboring_street}'
-            WHERE directions.id_direction = ${id_user}`,
+            WHERE directions.id_user_encrypted = ${id_user}`,
             function (error, result, field) {
                 if (error)
                     return reject(error);

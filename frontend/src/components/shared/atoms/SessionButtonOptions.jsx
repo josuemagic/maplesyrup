@@ -38,7 +38,7 @@ export function SessionButtonOptions() {
                 {i_s_pa_ss ?
                     <div className="dropdown-item" href="#">
                         <Link className="nav-link" to={`/User/${id_user}`}>
-                            Perfil
+                            {names}
                         </Link>
                     </div>
                     :

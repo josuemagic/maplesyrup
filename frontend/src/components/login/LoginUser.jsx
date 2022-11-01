@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../redux/actions/login/loginUser";
@@ -10,7 +10,7 @@ export function LoginUser() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { error } = useSelector((state) => state.users.new);
+    const { success, error } = useSelector((state) => state.users.new);
 
 
     const handleInitSesionUser = (data) => {
