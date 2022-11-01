@@ -1,9 +1,11 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { HomeRoute } from '../../router/home/HomeRouter';
 import { CustomButtonNavigate } from '../shared/atoms/CustomButtonNavigate';
-import { CustomButtonNavigatev2 } from '../shared/atoms/CustomButtonNavigatev2';
 import { CustomInput } from '../shared/atoms/customInput';
-import { useDispatch, useSelector } from 'react-redux';
+import { CustomButtonNavigatev2 } from '../shared/atoms/CustomButtonNavigatev2';
+import { FcSearch } from 'react-icons/fc';
+
 import { GetProductsByWord } from '../../redux/actions/home/GetProductsByWord';
 
 export function Home() {
@@ -31,7 +33,7 @@ export function Home() {
                         <button className="btn btnFormSearch"
                             type="submit"
                             disabled={loading ? true : false}
-                        >Buscar</button>
+                        ><FcSearch /></button>
                     </form>
                 </div>
             </div>
