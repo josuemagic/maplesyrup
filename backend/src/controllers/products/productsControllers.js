@@ -1,10 +1,12 @@
 const { response, request } = require("express");
 const {
   productsGetServices,
-  productsPostServices,
+  newProductsPostServices,
   newProductsGetServices,
   infOfferProductsGetServices,
-  topSellProductsGetServices
+  topSellProductsGetServices,
+  searchProductsByWordServices,
+  productInformationByIdServices
 } = require("../../services/products/productsServices");
 
 const productsGet = async (req = request, res = response) => {
@@ -60,9 +62,43 @@ const inOfferProductsGet = async (req, res) => {
   }
 }
 
+const searchProductsByWordGet = async (req, res) => {
+
+  const { word } = req.params;
+
+  try {
+    let response = await searchProductsByWordServices(word);
+    return res.status(200).json({
+      response
+    })
+  } catch (error) {
+    res.status(500).json({
+      msg: "It couldn't get top sell products"
+    })
+  }
+}
+
+const productInformationById = async (req, res) => {
+
+  const { id } = req.params;
+
+  try {
+
+    let response = await productInformationByIdServices(id)
+
+    return res.status(200).json({
+      response
+    })
+  } catch (error) {
+    return res.status(500).json({
+      msg: "It couldn't get information of product"
+    })
+  }
+}
+
 // CREATED
 
-const productsPost = async (req = request, res) => {
+const newProductsPost = async (req = request, res) => {
   const { name, count, price, typeProduct } = req.body;
 
   if (!name || !count || !price || !typeProduct || !req.files) {
@@ -72,7 +108,7 @@ const productsPost = async (req = request, res) => {
   }
 
   try {
-    let response = await productsPostServices(req);
+    let response = await newProductsPostServices(req);
     return res.status(200).json({
       msg: "Product Uploaded",
     });
@@ -83,31 +119,13 @@ const productsPost = async (req = request, res) => {
   }
 };
 
-const productsPut = (req, res) => {
-  res.json({
-    msg: "put API - controlador",
-  });
-};
-
-const productsPatch = (req, res) => {
-  res.json({
-    msg: "patch API - controlador",
-  });
-};
-
-const productsDelete = (req, res) => {
-  res.json({
-    msg: "delete API - controlador",
-  });
-};
 
 module.exports = {
   productsGet,
   productsNewGet,
   topSellProductsGet,
   inOfferProductsGet,
-  productsPost,
-  productsPut,
-  productsPatch,
-  productsDelete,
+  searchProductsByWordGet,
+  productInformationById,
+  newProductsPost,
 };

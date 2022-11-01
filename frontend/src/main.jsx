@@ -13,7 +13,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <div style={{ background: '#fcd1c6', height: 'auto' }}>
+      <div style={{
+        background: '#fcd1c6',
+        height: 'auto',
+        overflowX: 'hidden',
+        backgroundColor: 'rgb(245, 228, 181)'
+      }}>
         <BrowserRouter>
           <AppRouter />
         </BrowserRouter>

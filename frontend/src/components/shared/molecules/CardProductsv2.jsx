@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../../styles/shared/molecules/customCard/customCardProductv2.css';
 import whitNot_Image from '../../../../public/pictures/whitNot_Image.png';
 import { fetchShoppingCart } from '../../../redux/slices/managmentProducts/shoppingCart';
 
-export default function CardProductsv2({ id_product = "", title = "Titulo", price = "precio", image = whitNot_Image }) {
+export default function CardProductsv2({ id_product = "", title = "Titulo", price = "Precio", image = whitNot_Image }) {
 
     const dispatch = useDispatch();
 
@@ -27,7 +28,7 @@ export default function CardProductsv2({ id_product = "", title = "Titulo", pric
         }
 
         // Get data from localstorage
-        // It's most a array 
+        // It's most an array 
         const array = dataShopping;
 
         // Add the product join data localstorage
@@ -36,11 +37,6 @@ export default function CardProductsv2({ id_product = "", title = "Titulo", pric
         // Add data to localstorage
         localStorage.setItem("shopping_cart", JSON.stringify(array));
     }
-
-    const prueba = () => {
-        localStorage.clear()
-    }
-
 
     return (
         <>
@@ -53,10 +49,11 @@ export default function CardProductsv2({ id_product = "", title = "Titulo", pric
                             <p className="titulo">Precio: ${price}</p>
                             <span className="categoria">
                                 <span className="categoria2">
-                                    <button className='buttonBuy'
-                                        onClick={() => {
-                                            prueba();
-                                        }}>Comprar</button>
+                                    <button className='buttonBuy'>
+                                        <Link className='text-decoration-none' to={`/BuyProducts/${id_product}`}>
+                                            Comprar
+                                        </Link>
+                                    </button>
                                     <button className='buttonBuy' onClick={
                                         () => {
                                             handleAddProductShoppingCart(id_product, title, price, image);

@@ -1,25 +1,28 @@
 const {
-  usuariosGetModels,
+  getInformationUserModels,
   newUserModels,
-  newDirecctionFromUserId } = require("../../models/users/usersModels");
+  newDirectionFromUserId,
+  editInformationUserModels,
+  editInformationDirectionsUserModels } = require("../../models/users/usersModels");
 
-const usuariosGetService = async () => {
+
+const getInformationUserServices = async (data) => {
   try {
-    let response = await usuariosGetModels();
+    let response = await getInformationUserModels(data);
     return response;
   } catch (error) {
     return error;
   }
-};
+}
 
-const newUserPostServices = async (data) => {
+const newUserPostServices = async (id_encrypted, data) => {
 
   // Call the models for add user and the response that
   // return the sql we'll set the newDirecionFromServices
 
   try {
-    let response = await newUserModels(data);
-    let second_response = await newDirectionFromServices(response.insertId, data);
+    let response = await newUserModels(id_encrypted, data);
+    let second_response = await newDirectionFromServices(response.insertId, data, id_encrypted);
 
     return second_response;
 
@@ -28,10 +31,10 @@ const newUserPostServices = async (data) => {
   }
 };
 
-const newDirectionFromServices = async (id_user, data_direction) => {
+const newDirectionFromServices = async (id_user, data_direction, id_encrypted) => {
   try {
 
-    let response = await newDirecctionFromUserId(id_user, data_direction);
+    let response = await newDirectionFromUserId(id_user, data_direction, id_encrypted);
     return response;
 
   } catch (error) {
@@ -39,28 +42,24 @@ const newDirectionFromServices = async (id_user, data_direction) => {
   }
 }
 
-const ususariosPutServices = (req, res) => {
-  res.json({
-    msg: "put API - controlador",
-  });
-};
+const editInformationUserServices = async (data) => {
 
-const ususariosPatchServices = (req, res) => {
-  res.json({
-    msg: "patch API - controlador",
-  });
-};
+  try {
 
-const ususariosDeleteServices = (req, res) => {
-  res.json({
-    msg: "delete API - controlador",
-  });
-};
+    let response = await editInformationUserModels(data);
+    await editInformationDirectionsUserModels(data);
+    return response;
+
+  } catch (error) {
+    return error
+  }
+}
+
+
+
 
 module.exports = {
-  usuariosGetService,
+  getInformationUserServices,
   newUserPostServices,
-  ususariosPutServices,
-  ususariosPatchServices,
-  ususariosDeleteServices,
+  editInformationUserServices
 };

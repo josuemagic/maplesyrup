@@ -1,0 +1,14 @@
+#navBarMenu{
+    background-color: rgb(84, 51, 15);
+}
+
+.btn-sesion {
+    background-color: transparent;
+}
+
+
+.shopping-and-sesion {
+    display: flex;
+    flex-direction: row;
+    
+}

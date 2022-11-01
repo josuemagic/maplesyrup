@@ -1,37 +1,50 @@
-const { response, request } = require("express");
+const uuid = require('uuid');
 const { petitionSQL } = require("../../models/users/usersModels");
 
 const {
-  usuariosGetService,
+  getInformationUserServices,
   newUserPostServices,
-  //   ususariosPut,
-  //   ususariosPatch,
-  //   ususariosDelete,
+  editInformationUserServices
 } = require("../../services/users/usersServices");
 
-const usuariosGet = async (req = request, res = response) => {
-  // Aca llaman SOLAMENTE llamamos a services y el sercices llama al modelo
-  // y retorna la respuesta de la base de datos
+
+const getInformationUserController = async (req, res) => {
 
   try {
-    let response = await usuariosGetService();
+
+    let response = await getInformationUserServices(req.params);
+
+    if (response.length === 0) {
+      return res.status(404).json({
+        msg: "User Not Found"
+      })
+    }
+
     return res.status(200).json({
-      response,
-    });
+      response
+    })
+
   } catch (error) {
     return res.status(500).json({
-      error,
-    });
+      msg: 'User informacion could not get'
+    })
   }
-};
+}
 
-const newUserPostController = async (req, res) => {
+const newUserController = async (req, res) => {
+
+  const { name, email, password } = req.body;
 
   try {
-    let response = await newUserPostServices(req.body);
+
+    const uniqueID = uuid.v4();
+    let response = await newUserPostServices(uniqueID, req.body);
 
     return res.status(200).json({
-      msg: "user created"
+      uniqueID,
+      name,
+      email,
+      password
     })
 
   } catch (error) {
@@ -41,28 +54,24 @@ const newUserPostController = async (req, res) => {
   }
 };
 
-const ususariosPut = (req, res) => {
-  res.json({
-    msg: "put API - controlador",
-  });
-};
+const editInformationUserController = async (req, res) => {
 
-const ususariosPatch = (req, res) => {
-  res.json({
-    msg: "patch API - controlador",
-  });
-};
+  try {
+    let response = await editInformationUserServices(req.body);
 
-const ususariosDelete = (req, res) => {
-  res.json({
-    msg: "delete API - controlador",
-  });
+    return res.status(200).json({
+      msg: "User Information Uploaded"
+    })
+
+  } catch (error) {
+    return res.status(500).json({
+      msg: "Error uploaded information user"
+    })
+  }
 };
 
 module.exports = {
-  usuariosGet,
-  newUserPostController,
-  ususariosPut,
-  ususariosPatch,
-  ususariosDelete,
+  getInformationUserController,
+  newUserController,
+  editInformationUserController
 };

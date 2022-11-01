@@ -3,7 +3,6 @@ import { FaShoppingCart, FaTrashAlt } from 'react-icons/fa';
 
 export function ShoppingCart() {
 
-    const [dataShoppingCart, setDataShoppingCart] = useState({});
     const [loadingCart, setLoadingCart] = useState(false);
 
     // Delete element of shopping cart
@@ -16,25 +15,14 @@ export function ShoppingCart() {
         // Update of data from shopping_cart
         localStorage.setItem("shopping_cart", JSON.stringify(newLements));
 
-        console.log(newLements);
         setLoadingCart(true);
     }
-
-    useEffect(() => {
-        // Convert data in array
-        setDataShoppingCart(JSON.parse(localStorage.getItem("shopping_cart")) || []);
-    }, [localStorage])
 
     useEffect(() => {
         setTimeout(() => {
             setLoadingCart(false);
         }, 2000);
     }, [loadingCart])
-
-    // useEffect(() => {
-    //     console.log(elementsShoppingCart);
-    // }, [])
-
 
     const elementsShoppingCart = JSON.parse(localStorage.getItem("shopping_cart")) || [];
 
@@ -50,9 +38,9 @@ export function ShoppingCart() {
 
                     {elementsShoppingCart.map((product, index) => {
                         return <div className="dropdown-item" href="#">
-                            <img width={50} height={50} src={product.image_path} alt="" className="me-3" />
+                            <img width={50} height={50} src={product.image_path} alt="" className="" />
                             <a className="me-2">{product.title}</a>
-                            <button className="btn btn-danger m-2" onClick={() => {
+                            <button className="btn btn-danger" onClick={() => {
                                 handleDeleteElement(index)
                             }} ><FaTrashAlt /></button>
                         </div>

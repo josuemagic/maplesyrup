@@ -13,12 +13,18 @@ export function SalesProducts() {
 
     const { loading, products, error } = useSelector((state) => state.products.list);
 
+    if (error) {
+        return (
+            <h2 className=' alert alert-danger row justify-content-center'>Error al obtener los productos</h2>
+        )
+    }
+
     return (<>
 
         <div id='containerProducts'>
 
-            {products.map((product) => {
-                return <div className='col-lg-3 col-sm-1 productCard'>
+            {products.map((product, index) => {
+                return <div key={index} className='col-lg-3 col-sm-1 productCard'>
                     <CardProductsv2
                         title={product.name}
                         price={product.price}

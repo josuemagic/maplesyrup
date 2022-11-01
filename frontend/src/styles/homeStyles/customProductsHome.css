@@ -19,6 +19,7 @@
     width: 100%;
     height: 5em;
     background: transparent;
+    /* background: transparent; */
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;

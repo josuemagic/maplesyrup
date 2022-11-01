@@ -54,6 +54,32 @@ function inOfferProductsGetModels() {
   });
 }
 
+function searchProductsByWordModels(wordProduct) {
+  return new Promise((resolve, reject) => {
+    conexion.query(`
+                  SELECT * FROM products p
+                  WHERE p.name OR p.typeProduct 
+                  LIKE '${wordProduct}%'`, function (error, result, field) {
+      if (error) return reject(error);
+      return resolve(result);
+    });
+  });
+}
+
+
+function productInformationByIdModels(id_product) {
+  return new Promise((resolve, reject) => {
+    conexion.query(`
+                  SELECT * FROM products p 
+                  INNER JOIN product_information i 
+                  ON p.id_product = i.id_product_information
+                  WHERE p.id_product = ${id_product}`, function (error, result, field) {
+      if (error) return reject(error);
+      return resolve(result);
+    });
+  });
+}
+
 function newProductModel(data) {
   const { name, count, price, typeProduct, pathImage, dateCreated } = data;
 
@@ -72,7 +98,15 @@ function newProductModel(data) {
 module.exports = {
   getProducts,
   newProductsGetModels,
-  newProductModel,
   topSellProductsGetModels,
-  inOfferProductsGetModels
+  inOfferProductsGetModels,
+  searchProductsByWordModels,
+  productInformationByIdModels,
+  newProductModel,
 };
+
+
+
+// SELECT * FROM products p
+// WHERE p.name OR p.typeProduct
+// LIKE 'collar%' 

@@ -2,11 +2,10 @@ import { combineReducers } from "redux";
 
 import { ProductsReducer } from "./products/index";
 import { ShoppingCartSliceReducer } from "./shoppingCart/index";
-
-
-export * from './listShpppingCart'
+import { UsersReducer } from "./users/index";
 
 export const ProductsManagmentReducer = combineReducers({
     products: ProductsReducer.reducer,
-    shopping_cart: ShoppingCartSliceReducer.reducer
+    shopping_cart: ShoppingCartSliceReducer.reducer,
+    users: UsersReducer.reducer,
 });

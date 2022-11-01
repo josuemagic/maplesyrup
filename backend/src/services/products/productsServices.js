@@ -2,9 +2,11 @@ const { response, request } = require("express");
 const {
   getProducts,
   newProductsGetModels,
-  newProductModel,
   topSellProductsGetModels,
-  inOfferProductsGetModels
+  inOfferProductsGetModels,
+  searchProductsByWordModels,
+  productInformationByIdModels,
+  newProductModel
 } = require("../../models/products/producstModels");
 
 // Cloudinary configuration
@@ -47,7 +49,29 @@ const infOfferProductsGetServices = async () => {
   }
 };
 
-const productsPostServices = async (data) => {
+const searchProductsByWordServices = async (wordProduct) => {
+  try {
+    let response = await searchProductsByWordModels(wordProduct);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+
+const productInformationByIdServices = async (id_product) => {
+
+  try {
+    let response = await productInformationByIdModels(id_product);
+    return response;
+  } catch (error) {
+    return error
+  }
+}
+
+//CREATE 
+
+const newProductsPostServices = async (data) => {
   const { fileImage } = data.files;
   data.body.count = parseInt(data.body.count);
   data.body.price = parseFloat(data.body.price);
@@ -71,29 +95,12 @@ const productsPostServices = async (data) => {
 };
 
 
-
-// const productsPutServices = (req, res) => {
-//   res.json({
-//     msg: "put API - controlador",
-//   });
-// };
-
-// const productsPatchServices = (req, res) => {
-//   res.json({
-//     msg: "patch API - controlador",
-//   });
-// };
-
-// const productsDeleteServices = (req, res) => {
-//   res.json({
-//     msg: "delete API - controlador",
-//   });
-// };
-
 module.exports = {
   productsGetServices,
   newProductsGetServices,
   topSellProductsGetServices,
   infOfferProductsGetServices,
-  productsPostServices,
+  searchProductsByWordServices,
+  productInformationByIdServices,
+  newProductsPostServices,
 };

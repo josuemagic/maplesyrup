@@ -4,10 +4,10 @@ const {
     productsNewGet,
     topSellProductsGet,
     inOfferProductsGet,
-    productsPost,
-    productsPut,
-    productsDelete,
-    productsPatch } = require('../../controllers/products/productsControllers');
+    searchProductsByWordGet,
+    productInformationById,
+    newProductsPost,
+} = require('../../controllers/products/productsControllers');
 
 const router = Router();
 
@@ -19,12 +19,10 @@ router.get('/TopSaleProducts', topSellProductsGet);
 
 router.get('/InOfferProducts', inOfferProductsGet);
 
-router.post('/', productsPost);
+router.get('/searchProductsByWord/:word', searchProductsByWordGet);
 
-router.put('/:id', productsPut);
+router.get('/productInformationById/:id', productInformationById);
 
-router.patch('/', productsDelete);
-
-router.delete('/', productsPatch);
+router.post('/', newProductsPost);
 
 module.exports = router;
