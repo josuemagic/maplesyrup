@@ -26,10 +26,11 @@
 .contenedor-card-item-wrapper {
 	overflow: hidden;
 	position: relative !important;
-	background: #3E2723;
+	background: transparent;
 	border-radius: 5px;
-    width: 70%; /* tamaño de los contenedores donde esta la imagen*/
+    width: 16em; /* tamaño de los contenedores donde esta la imagen*/
     height: 15em;
+	text-align: center;
 }
 
 .contenedor-card-item img {
@@ -44,8 +45,8 @@
 .contenedor-card-item .contenedor-info {
 	position: absolute;
 	width: 100%;
-	height: 70px;
-	bottom: -70px;
+	height: 50%; /*Tamaño de la parte que se pone oscura cuando se hace pone el cursor encima*/
+	bottom: -90px;
 	-webkit-transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 	transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -64,10 +65,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 
 .contenedor-card-item .contenedor-info .info {
-	color: #fff;
+	color: rgb(250, 250, 250); /*Color de las palabras que aparen en la tarjeta*/
 	position: relative;
 	z-index: 500;
-	padding: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 10px;
 }
 
 .contenedor-card-item .contenedor-info .info .titulo {
@@ -104,6 +105,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     flex-direction: row;
     justify-content: center;
     align-items: center;
+	margin: 1em 0 0 0;
 }
 
 @media screen and (max-width: 900px) {

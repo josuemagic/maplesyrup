@@ -1,16 +1,28 @@
 const { Router } = require('express');
-const { productsGet, productsPost, productsPut, productsDelete, productsPatch } = require('../../controllers/products/productsControllers');
+const {
+    productsGet,
+    productsNewGet,
+    topSellProductsGet,
+    inOfferProductsGet,
+    searchProductsByWordGet,
+    productInformationById,
+    newProductsPost,
+} = require('../../controllers/products/productsControllers');
 
 const router = Router();
 
 router.get('/', productsGet);
 
-router.post('/', productsPost);
+router.get('/NewProducts', productsNewGet);
 
-router.put('/:id', productsPut);
+router.get('/TopSaleProducts', topSellProductsGet);
 
-router.patch('/', productsDelete);
+router.get('/InOfferProducts', inOfferProductsGet);
 
-router.delete('/', productsPatch);
+router.get('/searchProductsByWord/:word', searchProductsByWordGet);
+
+router.get('/productInformationById/:id', productInformationById);
+
+router.post('/', newProductsPost);
 
 module.exports = router;

@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetListProducts } from '../../redux/actions/products/GetListProducts';
 
-import { CardProducts } from '../shared/molecules/CardProducts';
 import CardProductsv2 from '../shared/molecules/CardProductsv2';
+import loginMapleSyrup from '../../../public/pictures/loginMapleSyrup.gif';
 
 import '../../styles/homeStyles/customProductsHome.css'
 
@@ -17,81 +17,35 @@ export function HomeProducts() {
         dispatch(GetListProducts());
     }, [])
 
-    useEffect(() => {
-        console.log(products);
-    }, [products])
-
+    if (error) {
+        return (
+            <h2 className=' alert alert-danger row justify-content-center'>Error al obtener los productos</h2>
+        )
+    }
 
     return (
         <>
-            <div id='containderTopProducts'>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                </div>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProductsv2 /></div>
-                </div>
-                
+            {
+                loading
+                    ? <div className="w-100 justify-content-center align-content-center row">
+                        <img src={loginMapleSyrup} width={50} height={900} alt="" />
+                    </div>
+                    :
+                    <div id='containerProducts'>
 
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                
+                        {products.map((product, index) => {
+                            return <div key={index} className='col-lg-3 col-sm-1 productCard'>
+                                <CardProductsv2
+                                    id_product={product.id_product}
+                                    title={product.name}
+                                    price={product.price}
+                                    image={product.path_image}
+                                /></div>
+                        })}
 
-                {/* <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                
-              
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div>
-                <div className='rowProducts'>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                    <div className='col-lg-3 col-sm-1 productCard'><CardProducts /></div>
-                </div> */}
-              
-            
+                    </div>
 
-
-                {loading ? <h1>Cargando</h1> : ''}
-            </div>
-            
+            }
         </>
     )
 }

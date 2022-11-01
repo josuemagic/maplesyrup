@@ -1,0 +1,67 @@
+.about{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: grid;
+    min-height: 640px;
+    grid-template-columns: 20% 80%;
+    background: linear-gradient(rgb(255, 192, 203),rgb(230, 139, 158));
+}
+
+.linkInstagram{
+    display: block;
+    width: 90%;
+    max-height: 25px;
+    background: linear-gradient(32deg, rgba(255, 94, 0, 0.5), rgba(174, 0, 255, 0.938));
+    padding: 9px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 2px;
+    border-radius: 20px 10px;
+    box-shadow: 0px 10px 8px 0px rgba(0, 0, 0, 0.322);
+    transition: all 0.5s;
+    font-size: 12px;
+}
+.linkInstagram:hover{
+    background-color: rgb(255, 208, 0);
+}
+.sTitle{
+    color: rgb(247, 160, 175);
+    
+    margin-bottom: 30px;
+}
+.contact{
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2,15px);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin: auto;
+    justify-items: center;
+}
+.mini{
+    font-family: Verdana, 12;
+    color: rgb(112, 112, 112);
+}
+
+.infoAbout{
+    display: grid;
+    grid-gap: 20px;
+    min-width: 900px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 100px);
+    background: rgb(255, 255, 255);
+    /*Alineación horizontal*/
+    justify-content: space-around;
+    /*Alineación vertical*/
+    align-content: space-around;
+}
+.txt{
+    margin: 50px;
+}
+@media screen and (max-width: 1150px){
+    .about{
+        grid-template-columns: 1fr;
+        grid-template-rows: 120px 1fr;
+    }
+}

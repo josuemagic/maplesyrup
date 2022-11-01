@@ -1,54 +1,106 @@
-const { response, request } = require('express');
-const { petitionSQL } = require('../../models/users/usersModels');
+const { response, request } = require("express");
+const {
+  getProducts,
+  newProductsGetModels,
+  topSellProductsGetModels,
+  inOfferProductsGetModels,
+  searchProductsByWordModels,
+  productInformationByIdModels,
+  newProductModel
+} = require("../../models/products/producstModels");
 
-const usuariosGet = async (req = request, res = response) => {
+// Cloudinary configuration
+const cloudinary = require("cloudinary").v2;
+cloudinary.config(process.env.CLOUDINARY_URL);
 
-    try {
-        let response = await petitionSQL('SELECT * FROM users');
-        return res.status(200).json({
-            response
-        })
-    } catch (error) {
-        return res.status(500).json({
-            error: "No se pudo hacer la peticion a la base de datos"
-        })
-    }
+const productsGetServices = async () => {
+  try {
+    let response = await getProducts();
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+const newProductsGetServices = async () => {
+  try {
+    let response = await newProductsGetModels();
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+const topSellProductsGetServices = async () => {
+  try {
+    let response = await topSellProductsGetModels();
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+const infOfferProductsGetServices = async () => {
+  try {
+    let response = await inOfferProductsGetModels();
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+const searchProductsByWordServices = async (wordProduct) => {
+  try {
+    let response = await searchProductsByWordModels(wordProduct);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+
+const productInformationByIdServices = async (id_product) => {
+
+  try {
+    let response = await productInformationByIdModels(id_product);
+    return response;
+  } catch (error) {
+    return error
+  }
 }
 
-const ususariosPost = async (req, res) => {
+//CREATE 
 
-    const body = req.body;
+const newProductsPostServices = async (data) => {
+  const { fileImage } = data.files;
+  data.body.count = parseInt(data.body.count);
+  data.body.price = parseFloat(data.body.price);
 
-    res.json({
-        msg: 'post API - controlador'
-    })
-}
-
-const ususariosPut = (req, res) => {
-
-    res.json({
-        msg: 'put API - controlador',
-    })
-}
-
-const ususariosPatch = (req, res) => {
-    res.json({
-        msg: 'patch API - controlador'
-    })
-}
-
-const ususariosDelete = (req, res) => {
-    res.json({
-        msg: 'delete API - controlador'
-    })
-}
-
+  // Subimos el archivo a cloudinary
+  try {
+    // const { secure_url } = await cloudinary.uploader.upload(
+    //   fileImage.tempFilePath,
+    //   {height: 1250, width: 1870, crop: "scale"}
+    // );
+    const { secure_url } = await cloudinary.uploader.upload(
+      fileImage.tempFilePath
+    );
+    data.body.pathImage = secure_url;
+    // Go to newProductModel
+    const response = newProductModel(data.body);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
 
 
 module.exports = {
-    usuariosGet,
-    ususariosPost,
-    ususariosPut,
-    ususariosPatch,
-    ususariosDelete
-}
+  productsGetServices,
+  newProductsGetServices,
+  topSellProductsGetServices,
+  infOfferProductsGetServices,
+  searchProductsByWordServices,
+  productInformationByIdServices,
+  newProductsPostServices,
+};

@@ -1,54 +1,65 @@
-const { response, request } = require('express');
-const { petitionSQL } = require('../../models/users/usersModels');
+const {
+  getInformationUserModels,
+  newUserModels,
+  newDirectionFromUserId,
+  editInformationUserModels,
+  editInformationDirectionsUserModels } = require("../../models/users/usersModels");
 
-const usuariosGet = async (req = request, res = response) => {
 
-    try {
-        let response = await petitionSQL('SELECT * FROM users');
-        return res.status(200).json({
-            response
-        })
-    } catch (error) {
-        return res.status(500).json({
-            error: "No se pudo hacer la peticion a la base de datos"
-        })
-    }
+const getInformationUserServices = async (data) => {
+  try {
+    let response = await getInformationUserModels(data);
+    return response;
+  } catch (error) {
+    return error;
+  }
 }
 
-const ususariosPost = async (req, res) => {
+const newUserPostServices = async (id_encrypted, data) => {
 
-    const body = req.body;
+  // Call the models for add user and the response that
+  // return the sql we'll set the newDirecionFromServices
 
-    res.json({
-        msg: 'post API - controlador'
-    })
+  try {
+    let response = await newUserModels(id_encrypted, data);
+    let second_response = await newDirectionFromServices(response.insertId, data, id_encrypted);
+
+    return second_response;
+
+  } catch (error) {
+    return error;
+  }
+};
+
+const newDirectionFromServices = async (id_user, data_direction, id_encrypted) => {
+  try {
+
+    let response = await newDirectionFromUserId(id_user, data_direction, id_encrypted);
+    return response;
+
+  } catch (error) {
+    return error
+  }
 }
 
-const ususariosPut = (req, res) => {
+const editInformationUserServices = async (data) => {
 
-    res.json({
-        msg: 'put API - controlador',
-    })
+  try {
+
+    let response = await editInformationUserModels(data);
+    await editInformationDirectionsUserModels(data);
+    return response;
+
+  } catch (error) {
+    return error
+  }
 }
 
-const ususariosPatch = (req, res) => {
-    res.json({
-        msg: 'patch API - controlador'
-    })
-}
-
-const ususariosDelete = (req, res) => {
-    res.json({
-        msg: 'delete API - controlador'
-    })
-}
 
 
 
 module.exports = {
-    usuariosGet,
-    ususariosPost,
-    ususariosPut,
-    ususariosPatch,
-    ususariosDelete
-}
+  getInformationUserServices,
+  newUserPostServices,
+  editInformationUserServices
+};

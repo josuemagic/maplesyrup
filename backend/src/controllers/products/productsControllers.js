@@ -1,54 +1,131 @@
-const { response, request } = require('express');
-const { petitionSQL } = require('../../models/users/usersModels');
+const { response, request } = require("express");
+const {
+  productsGetServices,
+  newProductsPostServices,
+  newProductsGetServices,
+  infOfferProductsGetServices,
+  topSellProductsGetServices,
+  searchProductsByWordServices,
+  productInformationByIdServices
+} = require("../../services/products/productsServices");
 
 const productsGet = async (req = request, res = response) => {
+  try {
+    let response = await productsGetServices();
+    return res.status(200).json({
+      data: response
+    });
+  } catch (error) {
+    res.status(500).json({
+      msg: "It couldn't get products ",
+      error,
+    });
+  }
+};
 
-    // Aca llaman SOLAMENTE a services y el sercices llama al modelo 
-    // y retorna la respuesta de la base de datos
-
-    // Aqui solamente se obtiene la req, se hace la 
-    // validacion si esta o no, (pensando en "moment") 
-    // para la validacion de datos
-
-    res.json({
-        msg: 'get API - controlador',
+const productsNewGet = async (req, res) => {
+  try {
+    let response = await newProductsGetServices();
+    return res.status(200).json({
+      data: response
     })
+  } catch (error) {
+    res.status(500).json({
+      msg: "It couldn't get new products"
+    })
+  }
 }
 
-const productsPost = async (req, res) => {
-
-    const body = req.body;
-
-    res.json({
-        msg: 'post API - controlador'
+const topSellProductsGet = async (req, res) => {
+  try {
+    let response = await topSellProductsGetServices();
+    return res.status(200).json({
+      data: response
     })
+  } catch (error) {
+    res.status(500).json({
+      msg: "It couldn't get top sell products"
+    })
+  }
 }
 
-const productsPut = (req, res) => {
-
-    res.json({
-        msg: 'put API - controlador',
+const inOfferProductsGet = async (req, res) => {
+  try {
+    let response = await infOfferProductsGetServices();
+    return res.status(200).json({
+      data: response
     })
+  } catch (error) {
+    res.status(500).json({
+      msg: "It couldn't get top sell products"
+    })
+  }
 }
 
-const productsPatch = (req, res) => {
-    res.json({
-        msg: 'patch API - controlador'
+const searchProductsByWordGet = async (req, res) => {
+
+  const { word } = req.params;
+
+  try {
+    let response = await searchProductsByWordServices(word);
+    return res.status(200).json({
+      response
     })
+  } catch (error) {
+    res.status(500).json({
+      msg: "It couldn't get top sell products"
+    })
+  }
 }
 
-const productsDelete = (req, res) => {
-    res.json({
-        msg: 'delete API - controlador'
+const productInformationById = async (req, res) => {
+
+  const { id } = req.params;
+
+  try {
+
+    let response = await productInformationByIdServices(id)
+
+    return res.status(200).json({
+      response
     })
+  } catch (error) {
+    return res.status(500).json({
+      msg: "It couldn't get information of product"
+    })
+  }
 }
 
+// CREATED
+
+const newProductsPost = async (req = request, res) => {
+  const { name, count, price, typeProduct } = req.body;
+
+  if (!name || !count || !price || !typeProduct || !req.files) {
+    return res.status(400).json({
+      msg: "Necesary Elements: Name, Count, Price, typeProduct and fileImage",
+    });
+  }
+
+  try {
+    let response = await newProductsPostServices(req);
+    return res.status(200).json({
+      msg: "Product Uploaded",
+    });
+  } catch (error) {
+    res.status(500).json({
+      error,
+    });
+  }
+};
 
 
 module.exports = {
-    productsGet,
-    productsPost,
-    productsPut,
-    productsPatch,
-    productsDelete
-}
+  productsGet,
+  productsNewGet,
+  topSellProductsGet,
+  inOfferProductsGet,
+  searchProductsByWordGet,
+  productInformationById,
+  newProductsPost,
+};
