@@ -5,7 +5,7 @@ import { ShoppingCart } from "./ShoppingCart";
 import { fetchShoppingCart } from '../../../redux/slices/managmentProducts/shoppingCart/listShpppingCart';
 import { SessionButtonOptions } from "../atoms/SessionButtonOptions";
 import loginMapleSyrup from '../../../../public/pictures/loginMapleSyrup.gif';
-import logoMapleSyrup from '../../../../public/pictures/logoMapleSyrup.png';
+import littleLogo from '../../../../public/pictures/littleLogo.png';
 import '../../../styles/shared/atoms/NavBar/navBar.css';
 
 export function NavBar() {
@@ -40,7 +40,9 @@ export function NavBar() {
     return (<>
         <nav className="navbar navbar-expand-lg" id="navBarMenu" style={{ background: '', margin: '2px 10px 2em 10px', padding: '0.6%' }} >
             <div className="container-fluid row">
-                <a className="navbar-brand col-lg-4" href="#">Miel de Maple</a>
+                <a className="navbar-brand col-lg-4" href="#">
+                    <img id="logo_image" src={littleLogo}></img>
+                </a>
                 <button className="navbar-toggler mb-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

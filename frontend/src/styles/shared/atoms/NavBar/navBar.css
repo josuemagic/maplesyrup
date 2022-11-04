@@ -6,6 +6,11 @@
     background-color: transparent;
 }
 
+#logo_image{
+    width: 3em;
+    height: 3em;
+}
+
 
 .shopping-and-sesion {
     display: flex;

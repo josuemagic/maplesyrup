@@ -66,17 +66,23 @@ function searchProductsByWordModels(wordProduct) {
   });
 }
 
-
+// TODO: Changed this function
+// Get all data minus id_product from "product_information" table
+// If there is a problem with get information product, we'll have to 
+//  change where get all data for "*"
 function productInformationByIdModels(id_product) {
   return new Promise((resolve, reject) => {
     conexion.query(`
-                  SELECT * FROM products p 
+                  SELECT p.id_product, p.name, p.count, p.price, p.typeProduct, p.path_image, p.date_created,
+                  i.id_product_information, i.in_offer, i.number_sales, i.likes, i.dislike, i.paths_images, i.description
+                  FROM products p 
                   INNER JOIN product_information i 
                   ON p.id_product = i.id_product_information
-                  WHERE p.id_product = ${id_product}`, function (error, result, field) {
-      if (error) return reject(error);
-      return resolve(result);
-    });
+                  WHERE p.id_product = ${id_product}`
+      , function (error, result, field) {
+        if (error) return reject(error);
+        return resolve(result);
+      });
   });
 }
 
@@ -95,6 +101,20 @@ function newProductModel(data) {
   });
 }
 
+function setCountProductById(data) {
+  const { product_id, new_count } = data;
+
+  return new Promise((resolve, reject) => {
+    conexion.query(
+      `UPDATE products SET count = '${new_count}' WHERE products.id_product = ${product_id}`,
+      function (error, result, field) {
+        if (error) return reject(error);
+        return resolve(result);
+      }
+    );
+  });
+}
+
 module.exports = {
   getProducts,
   newProductsGetModels,
@@ -103,6 +123,7 @@ module.exports = {
   searchProductsByWordModels,
   productInformationByIdModels,
   newProductModel,
+  setCountProductById
 };
 
 
