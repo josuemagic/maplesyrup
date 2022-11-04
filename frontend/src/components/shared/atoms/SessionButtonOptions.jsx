@@ -30,7 +30,7 @@ export function SessionButtonOptions() {
     return (<>
 
         <div className="dropdown me-5 nav-link btn-sesion">
-            <button className="btn dropdown-toggle" type="button" id="dropdownmenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <button className="btn dropdown-toggle bg-body" type="button" id="dropdownmenu" data-bs-toggle="dropdown" aria-expanded="false">
                 Sesion
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownmenu">

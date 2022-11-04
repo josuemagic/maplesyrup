@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetInformationProductById } from '../../redux/actions/buyProducts/GetInformationProductById'
 import { fetchShoppingCart } from '../../redux/slices/managmentProducts/shoppingCart';
 import loginMapleSyrup from '../../../public/pictures/loginMapleSyrup.gif';
 import '../../styles/buyProducts/buyProducts.css';
+import { MessageError } from "../shared/molecules/AlertMessages";
 
 export function BuyProducts() {
 
     const dispatch = useDispatch();
-    const { id_produt } = useParams();
+    const navigate = useNavigate();
+    const { id_product: id_product_params } = useParams();
 
     const [numberProducts, setNumberProducts] = useState(1);
 
@@ -18,9 +20,8 @@ export function BuyProducts() {
     const { id_product, name, count, price, description, path_image } = productInformation;
 
     useEffect(() => {
-        dispatch(GetInformationProductById(id_produt));
+        dispatch(GetInformationProductById(id_product_params));
     }, [])
-
 
     // Add Product to Shopping Cart
     const [dataShopping, setDataShopping] = useState([]);
@@ -48,6 +49,17 @@ export function BuyProducts() {
 
         // Add data to localstorage
         localStorage.setItem("shopping_cart", JSON.stringify(array));
+    }
+
+    const handleValidateUserSession = () => {
+        const userSesionIdUser = localStorage.getItem("id_user") || "";
+        const userSesionPassword = localStorage.getItem("password") || "";
+        const userSesionEmail = localStorage.getItem("email") || "";
+
+        if (!(userSesionIdUser || userSesionPassword || userSesionEmail)) {
+            return navigate('/login/LoginUser')
+        }
+        return navigate(`/PaypalPaymentOneProduct/${id_product_params}/${numberProducts}`);
     }
 
     if (error) {
@@ -89,7 +101,11 @@ export function BuyProducts() {
 
                         </div>
                         <div id="buttonsBuyAndCart">
-                            <button className="buttonBuy buyButton">Comprar</button>
+                            <button className="buttonBuy buyButton"
+                                onClick={() => {
+                                    handleValidateUserSession();
+                                }}
+                            >Comprar</button>
                             <button className="buttonBuy cartButton"
                                 onClick={
                                     () => {
