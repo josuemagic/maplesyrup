@@ -41,8 +41,8 @@ const newUserController = async (req, res) => {
     let response = await newUserPostServices(uniqueID, req.body);
 
     return res.status(200).json({
-      uniqueID,
-      name,
+      id_user_encrypted: uniqueID,
+      names: name,
       email,
       password
     })

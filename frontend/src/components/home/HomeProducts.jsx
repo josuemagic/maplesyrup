@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetListProducts } from '../../redux/actions/products/GetListProducts';
 
-import CardProductsv2 from '../shared/molecules/CardProductsv2';
+import { CardProductv3 } from '../shared/molecules/CardProductv3';
 import loginMapleSyrup from '../../../public/pictures/loginMapleSyrup.gif';
 
 import '../../styles/homeStyles/customProductsHome.css'
+import '../../styles/shared/molecules/customCard/customCardProductv3.css';
 
 export function HomeProducts() {
 
@@ -35,7 +36,7 @@ export function HomeProducts() {
 
                         {products.map((product, index) => {
                             return <div key={index} className='col-lg-3 col-sm-1 productCard'>
-                                <CardProductsv2
+                                <CardProductv3
                                     id_product={product.id_product}
                                     title={product.name}
                                     price={product.price}

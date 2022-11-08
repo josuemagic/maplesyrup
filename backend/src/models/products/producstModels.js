@@ -101,6 +101,21 @@ function newProductModel(data) {
   });
 }
 
+function newProductInformationModel(id_product, data) {
+  const { pathImage, description, in_offer } = data;
+
+  return new Promise((resolve, reject) => {
+    conexion.query(
+      `INSERT INTO product_information(id_product, in_offer, number_sales, likes, dislike, paths_images, description) 
+      VALUES ('${id_product}','${in_offer}','0','0','0','${pathImage}','${description}')`,
+      function (error, result, field) {
+        if (error) return reject(error);
+        return resolve(result);
+      }
+    );
+  });
+}
+
 function setCountProductById(data) {
   const { product_id, new_count } = data;
 
@@ -123,6 +138,7 @@ module.exports = {
   searchProductsByWordModels,
   productInformationByIdModels,
   newProductModel,
+  newProductInformationModel,
   setCountProductById
 };
 

@@ -12,28 +12,12 @@ export function LoginUser() {
 
     const { success, error } = useSelector((state) => state.users.new);
 
-
     const handleInitSesionUser = (data) => {
         const formData = {
             email: data.target.email.value,
             password: data.target.password.value,
         }
         dispatch(loginUser(formData));
-    }
-
-    if (error) {
-        return (<>
-            <MessageError message="Error al iniciar sesion" />
-            <button className="btn btn-danger"
-                onClick={
-                    () => {
-                        navigate('/login/LoginUser');
-                    }
-                }
-            >
-                Intentar nuevamente
-            </button>
-        </>)
     }
 
     return (<>

@@ -39,17 +39,6 @@ export function UserInformation() {
         }
     }, [sucessInformationUser])
 
-    if (errorEditUser) {
-        return (<>
-            <MessageError message="Error al editar la informacion del ususario, intente nuevamente" />
-            <button className="btn btn-danger"
-                onClick={() => {
-                    navigate('/home');
-                }}
-            >Ir al home</button>
-        </>)
-    }
-
     return (<>
         {
             <UserEditForm />

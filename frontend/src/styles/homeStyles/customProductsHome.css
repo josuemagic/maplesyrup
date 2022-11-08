@@ -2,7 +2,7 @@
 /* Menu products */
 
 #containerProducts {
-  padding: 0 0 0 8em;
+  padding: 0 0 0 1em; /*Here center our product cards*/
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;

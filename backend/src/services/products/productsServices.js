@@ -6,7 +6,8 @@ const {
   inOfferProductsGetModels,
   searchProductsByWordModels,
   productInformationByIdModels,
-  newProductModel
+  newProductModel,
+  newProductInformationModel
 } = require("../../models/products/producstModels");
 
 // Cloudinary configuration
@@ -87,8 +88,11 @@ const newProductsPostServices = async (data) => {
     );
     data.body.pathImage = secure_url;
     // Go to newProductModel
-    const response = newProductModel(data.body);
-    return response;
+    const response = await newProductModel(data.body);
+    // Got to newProductoInformation by id that return us "newProducModel"
+    const responseInformation = await newProductInformationModel(response.insertId, data.body);
+
+    return responseInformation;
   } catch (error) {
     return error;
   }

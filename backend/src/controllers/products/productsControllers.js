@@ -101,8 +101,8 @@ const productInformationById = async (req, res) => {
 const newProductsPost = async (req = request, res) => {
   const { name, count, price, typeProduct } = req.body;
 
-  if (!name || !count || !price || !typeProduct || !req.files) {
-    return res.status(400).json({
+  if (!name || !count || !price || !typeProduct) {
+    return res.status(404).json({
       msg: "Necesary Elements: Name, Count, Price, typeProduct and fileImage",
     });
   }

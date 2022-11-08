@@ -46,19 +46,6 @@ export function Login() {
 
   }
 
-  if (error && !success) {
-    return (<>
-      <MessageError message={error} />
-      <h1>
-        <button className="btn btn-danger"
-          onClick={() => {
-            window.location.reload();
-          }}
-        > Reintentar</button>
-      </h1>
-    </>)
-  }
-
   return (
     <>
       <LoginRoute />

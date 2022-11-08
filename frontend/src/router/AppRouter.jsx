@@ -15,6 +15,7 @@ import { SalesProducts } from "../components/SalesProducts/SalesProducts";
 import { BuyProducts } from "../components/buyProducts/BuyProducts";
 import { PaypalPayment } from "../components/buyProducts/PaypalPayment";
 import { MessageSuccessPayment } from "../components/buyProducts/MessageSuccessPayment";
+import { BuyShoppingCartProducts } from "../components/buyProducts/BuyShoppingCartProducts";
 
 
 export function AppRouter() {
@@ -33,6 +34,7 @@ export function AppRouter() {
       <Route path="/About/*" element={<About />} />
       <Route path="/BuyProducts/:id_product" element={<BuyProducts />} />
       <Route path="/PaypalPaymentOneProduct/:id_product/:count" element={<PaypalPayment />} />
+      <Route path="/PaypalPaymentShoppingCart" element={<BuyShoppingCartProducts />} />
       <Route path="/PaypalPaymentOneProduct/MessageSuccess" element={<MessageSuccessPayment />} />
       <Route path="/User/:id_user" element={<UserInformation />} />
       <Route path="/UltimateUser/*" element={<UltimateUser />} />

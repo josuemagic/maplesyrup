@@ -23,6 +23,6 @@ router.get('/searchProductsByWord/:word', searchProductsByWordGet);
 
 router.get('/productInformationById/:id', productInformationById);
 
-router.post('/', newProductsPost);
+router.post('/AddNewProduct', newProductsPost);
 
 module.exports = router;

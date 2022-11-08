@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import CardProductsv2 from '../shared/molecules/CardProductsv2';
+import { CardProductv3 } from '../shared/molecules/CardProductv3';
 import { GetListNewProducts } from '../../redux/actions/listNewProducts/GetListNewProducts';
 
 export function ListNewProducts() {
@@ -24,7 +25,7 @@ export function ListNewProducts() {
 
             {products.map((product, index) => {
                 return <div key={index} className='col-lg-3 col-sm-1 productCard'>
-                    <CardProductsv2
+                    <CardProductv3
                         title={product.name}
                         price={product.price}
                         image={product.path_image}

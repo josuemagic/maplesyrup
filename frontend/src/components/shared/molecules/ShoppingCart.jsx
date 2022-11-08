@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaTrashAlt } from 'react-icons/fa';
 
 export function ShoppingCart() {
+
+    const navigate = useNavigate();
 
     const [loadingCart, setLoadingCart] = useState(false);
 
@@ -45,7 +48,12 @@ export function ShoppingCart() {
                             }} ><FaTrashAlt /></button>
                         </div>
                     })}
-                    <button className="btn btn-primary w-100 mt-3">Ir al carrito</button>
+                    <button
+                        className="btn btn-primary w-100 mt-3"
+                        onClick={() => {
+                            navigate('/PaypalPaymentShoppingCart');
+                        }}
+                    >Ir al carrito</button>
                 </div>
             </div>
         }

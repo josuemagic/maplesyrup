@@ -43,15 +43,6 @@ export function RegisterUser() {
         </>);
     }
 
-    if (success) {
-        return (<>
-            <MessageError message="Error al registrar ususario" />
-            <h2>
-                <Link className="m-2 d-flex justify-content-center" to={'/home'}>Iniciar Sesion!!!</Link>
-            </h2>
-        </>);
-    }
-
     return (<>
         <form id="register_form" className="form_class" action="formulario.html" method="submit"
             onSubmit={(e) => {
