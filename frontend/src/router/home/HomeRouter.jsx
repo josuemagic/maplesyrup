@@ -4,7 +4,7 @@ import { HomeProducts } from "../../components/home/HomeProducts";
 import { SellTopProducts } from "../../components/sellTops/SellTopProducts";
 import { ListNewProducts } from "../../components/ListNewProducts/ListNewProducts";
 import { SalesProducts } from "../../components/SalesProducts/SalesProducts";
-import NotFound from "../not-found/NotFound";
+import NotFound from "../../components/not-found/NotFound";
 
 export function HomeRoute() {
     return (

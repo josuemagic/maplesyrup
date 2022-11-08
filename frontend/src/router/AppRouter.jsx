@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
 import { Login } from "../components/login/Login";
-import NotFound from "./not-found/NotFound";
+import NotFound from "../components/not-found/NotFound";
 import { NavBar } from "../components/shared/molecules/NavBar";
 import { Home } from "../components/home/Home";
 import { About } from "../components/about/About";
